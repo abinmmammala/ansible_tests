@@ -1,0 +1,20 @@
+# playbook name: ping.yml
+- hosts: "{{ HOSTS }}"
+  gather_facts: no
+  
+  
+  tasks:
+
+###############################
+# WINDOWS
+
+  - name: Windows - ping host
+    win_ping:
+    register: ping_output
+
+###############################
+# COMMON
+
+  - name: display output
+    debug:
+      msg: "{{ ping_output }}"
